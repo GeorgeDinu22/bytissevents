@@ -1,0 +1,157 @@
+.article {
+  padding: 56px 16px 32px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.2s ease-out;
+}
+
+.back:hover {
+  color: var(--primary);
+}
+
+.back svg {
+  width: 16px;
+  height: 16px;
+}
+
+.header {
+  max-width: 768px;
+  margin-top: 24px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.lead {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.cover,
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-outer);
+  background: linear-gradient(135deg, var(--background), rgb(252 3 86 / 0.4));
+}
+
+.cover {
+  aspect-ratio: 4 / 3;
+  margin-top: 32px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.body {
+  display: grid;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.text {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  max-width: 672px;
+  font-size: 17px;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.card {
+  padding: 24px;
+  border-radius: var(--radius-outer);
+  background: var(--surface);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.list li {
+  position: relative;
+  padding-left: 22px;
+  line-height: 1.5;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.gallery {
+  display: grid;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.photo {
+  aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 640px) {
+  .article {
+    padding: 80px 16px 48px;
+  }
+
+  .title {
+    font-size: 52px;
+  }
+
+  .lead {
+    font-size: 20px;
+  }
+
+  .cover {
+    aspect-ratio: 21 / 9;
+    margin-top: 48px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .body {
+    grid-template-columns: 7fr 5fr;
+    align-items: start;
+    gap: 64px;
+    margin-top: 56px;
+  }
+}

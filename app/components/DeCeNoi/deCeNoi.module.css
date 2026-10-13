@@ -1,0 +1,246 @@
+.section {
+  padding: 64px 16px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+/* ---------- Fraza mare, cu poze în text ---------- */
+
+.statement {
+  max-width: 960px;
+  margin-top: 24px;
+  font-size: clamp(26px, 4.4vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-wrap: pretty;
+}
+
+.statement em {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.pill {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: 2.1em;
+  height: 1em;
+  margin: 0 0.1em;
+  border-radius: var(--radius-pill);
+  vertical-align: -0.12em;
+  rotate: -4deg;
+  transition:
+    rotate 0.3s ease-out,
+    scale 0.3s ease-out;
+}
+
+.pill:nth-of-type(2) {
+  rotate: 3deg;
+}
+
+.pill:hover {
+  rotate: 0deg;
+  scale: 1.15;
+}
+
+/* ---------- Poza și pașii ---------- */
+
+.columns {
+  display: grid;
+  gap: 40px;
+  margin-top: 48px;
+}
+
+.photoCard {
+  position: relative;
+  padding: var(--card-padding);
+  border-radius: var(--radius-outer);
+  background: var(--surface);
+  rotate: -1.5deg;
+  transition: rotate 0.4s ease-out;
+}
+
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-inner);
+  background: var(--background);
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.stamp {
+  position: absolute;
+  right: -12px;
+  bottom: -28px;
+  width: 104px;
+  height: 104px;
+  animation: spin 22s linear infinite;
+}
+
+.stamp circle {
+  fill: var(--primary);
+}
+
+.stamp text {
+  fill: #ffffff;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 0.2s ease-out,
+    background-color 0.2s ease-out,
+    transform 0.2s ease-out;
+}
+
+.tab:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.tabActive,
+.tabActive:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.steps {
+  margin-top: 16px;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 1px solid rgb(252 3 86 / 0.18);
+  animation: stepIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  transition: padding-left 0.3s ease-out;
+}
+
+.step:last-child {
+  border-bottom: 0;
+}
+
+.step:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.step:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.step:hover {
+  padding-left: 8px;
+}
+
+.number {
+  color: rgb(252 3 86 / 0.35);
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  transition: color 0.3s ease-out;
+}
+
+.step:hover .number {
+  color: var(--primary);
+}
+
+.stepTitle {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.stepText {
+  max-width: 480px;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@keyframes stepIn {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 96px 16px;
+  }
+
+  .stamp {
+    right: -24px;
+    width: 128px;
+    height: 128px;
+  }
+}
+
+@media (min-width: 900px) {
+  .columns {
+    grid-template-columns: 5fr 7fr;
+    gap: 72px;
+    align-items: center;
+    margin-top: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp,
+  .step {
+    animation: none;
+  }
+}

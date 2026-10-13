@@ -1,0 +1,43 @@
+.button {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-pill);
+  background: #25d366;
+  color: #ffffff;
+  transition:
+    translate 0.3s ease-out,
+    opacity 0.3s ease-out,
+    scale 0.2s ease-out;
+}
+
+.button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.button:hover {
+  scale: 1.08;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+}
+
+.hidden {
+  translate: calc(100% + 24px) calc(100% + 24px);
+  opacity: 0;
+}
+
+/* Rămâne accesibil din tastatură chiar dacă e ascuns. */
+.hidden:focus-visible {
+  translate: 0;
+  opacity: 1;
+}

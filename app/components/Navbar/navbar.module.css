@@ -1,0 +1,152 @@
+.header {
+  position: sticky;
+  top: 16px;
+  z-index: 50;
+  padding: 0 16px;
+  transition: translate 0.3s ease-out;
+}
+
+.hidden {
+  translate: 0 calc(-100% - 24px);
+}
+
+/* Rămâne accesibil din tastatură chiar dacă e ascuns. */
+.hidden:focus-within {
+  translate: 0;
+}
+
+.nav {
+  position: relative;
+  max-width: var(--navbar-width);
+  margin: 0 auto;
+  padding: var(--card-padding);
+  border-radius: var(--radius-outer);
+  background: rgb(255 255 255 / 0.9);
+  box-shadow: 0 1px 3px rgb(252 3 86 / 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  border-radius: var(--radius-inner);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.links {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.link {
+  display: block;
+  padding: 8px 12px;
+  border-radius: var(--radius-inner);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    color 0.2s ease-out,
+    background-color 0.2s ease-out;
+}
+
+.link:hover {
+  background: var(--background);
+  color: var(--primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta {
+  display: none;
+  font-size: 14px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-inner);
+  cursor: pointer;
+  transition:
+    color 0.2s ease-out,
+    background-color 0.2s ease-out;
+}
+
+.toggle:hover {
+  background: var(--background);
+  color: var(--primary);
+}
+
+.toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.logo:focus-visible,
+.link:focus-visible,
+.toggle:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Meniul de mobil plutește sub navbar, fără să împingă pagina în jos. */
+.mobileMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--card-padding);
+  border-radius: var(--radius-outer);
+  background: var(--surface);
+  box-shadow: 0 16px 32px -16px rgb(252 3 86 / 0.35);
+}
+
+.mobileCta {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  .cta {
+    display: inline-flex;
+  }
+
+  .mobileCta {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .links {
+    display: flex;
+  }
+
+  .toggle,
+  .mobileMenu {
+    display: none;
+  }
+}

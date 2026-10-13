@@ -1,0 +1,20 @@
+.section {
+  /* Vârful clapei, ca procent din înălțimea plicului. */
+  --tip: 56%;
+  /* Înălțime rezervată până când știm ce variantă se afișează. */
+  min-height: 420px;
+  padding: 64px 16px;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgb(31 10 18 / 0.6);
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 96px 16px;
+  }
+}

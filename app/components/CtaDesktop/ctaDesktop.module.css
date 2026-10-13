@@ -1,0 +1,53 @@
+/* Titlul în stânga, plicul în dreapta. */
+.layout {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.heading {
+  flex: 1;
+  max-width: none;
+}
+
+.envelope {
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 min(58%, 560px);
+  aspect-ratio: 3 / 2;
+  will-change: transform;
+}
+
+/* Cât e deschis, plicul stă peste fundalul întunecat. */
+.envelopeOnTop {
+  z-index: 101;
+}
+
+/* Formularul stă în plic, în spatele feței, și alunecă în sus din el
+   (pozițiile vin din CtaDesktop.jsx). */
+.letter {
+  --width: 520px;
+  position: absolute;
+  bottom: 8px;
+  left: calc(50% - var(--width) / 2);
+  z-index: 1;
+  width: var(--width);
+  padding: var(--card-padding);
+  border-radius: var(--radius-outer);
+  background: var(--surface);
+  transform-origin: bottom center;
+  will-change: transform;
+  transition: box-shadow 0.4s ease-out;
+}
+
+.letterUp {
+  box-shadow: 0 -18px 48px -24px rgb(31 10 18 / 0.45);
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    gap: 64px;
+  }
+}

@@ -1,0 +1,189 @@
+.section {
+  padding: 64px 16px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 36px 24px;
+  margin-top: 48px;
+}
+
+/* Cardul arată ca un pliant: hârtie ușor înclinată, prinsă cu bandă
+   adezivă, cu o îndoitură la mijloc și un cupon de rupt în partea de jos. */
+.card {
+  --hole: 7px;
+  position: relative;
+  /* Umbra urmează conturul hârtiei, inclusiv găurile. */
+  filter: drop-shadow(0 1px 1px rgb(31 10 18 / 0.1))
+    drop-shadow(0 12px 12px rgb(31 10 18 / 0.16));
+  rotate: -1.5deg;
+  transition:
+    rotate 0.25s ease-out,
+    transform 0.25s ease-out,
+    filter 0.25s ease-out;
+}
+
+.card:nth-child(3n + 2) {
+  rotate: 1.2deg;
+}
+
+.card:nth-child(3n) {
+  rotate: -0.6deg;
+}
+
+.card:hover {
+  rotate: 0deg;
+  transform: translateY(-6px);
+}
+
+/* Hârtia e din două bucăți, pliantul și cuponul. Fiecare are câte un sfert
+   de cerc decupat în colțurile dinspre linia punctată, iar împreună dau
+   două găuri prin care se vede fundalul paginii. */
+.sheet {
+  padding: 20px 16px 16px;
+  border-radius: 3px 3px 0 0;
+  background: #ffffff;
+  -webkit-mask:
+    radial-gradient(circle at 0 100%, #0000 var(--hole), #000 calc(var(--hole) + 0.5px)),
+    radial-gradient(circle at 100% 100%, #0000 var(--hole), #000 calc(var(--hole) + 0.5px));
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle at 0 100%, #0000 var(--hole), #000 calc(var(--hole) + 0.5px)),
+    radial-gradient(circle at 100% 100%, #0000 var(--hole), #000 calc(var(--hole) + 0.5px));
+  mask-composite: intersect;
+}
+
+/* Banda adezivă */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 96px;
+  height: 24px;
+  background: rgb(252 3 86 / 0.28);
+  box-shadow: 0 1px 2px rgb(31 10 18 / 0.12);
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+
+.kicker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stars {
+  flex-shrink: 0;
+  color: #f5b301;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.media {
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
+  background: var(--foreground);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 100%;
+  background: linear-gradient(160deg, var(--background), rgb(252 3 86 / 0.28));
+}
+
+.play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  color: #ffffff;
+  transition: transform 0.2s ease-out;
+}
+
+.card:hover .play {
+  transform: scale(1.08);
+}
+
+.play svg {
+  width: 24px;
+  height: 24px;
+}
+
+.soon {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Cuponul de rupt, sub linia punctată */
+.stub {
+  padding: 16px;
+  border-top: 2px dashed rgb(31 10 18 / 0.22);
+  border-radius: 0 0 3px 3px;
+  background: #fffafb;
+  -webkit-mask:
+    radial-gradient(circle at 0 0, #0000 var(--hole), #000 calc(var(--hole) + 0.5px)),
+    radial-gradient(circle at 100% 0, #0000 var(--hole), #000 calc(var(--hole) + 0.5px));
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle at 0 0, #0000 var(--hole), #000 calc(var(--hole) + 0.5px)),
+    radial-gradient(circle at 100% 0, #0000 var(--hole), #000 calc(var(--hole) + 0.5px));
+  mask-composite: intersect;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.role {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 96px 16px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 56px;
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

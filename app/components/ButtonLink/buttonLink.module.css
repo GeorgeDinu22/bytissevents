@@ -1,0 +1,72 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  transition:
+    transform 0.2s ease-out,
+    background-color 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.primary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 10px 20px -8px rgb(252 3 86 / 0.45);
+}
+
+/* Pentru fundaluri în culoarea principală. */
+.light {
+  background: #ffffff;
+  color: var(--primary);
+}
+
+.light:hover {
+  box-shadow: 0 10px 20px -8px rgb(31 10 18 / 0.35);
+}
+
+.outline {
+  border-color: rgb(255 255 255 / 0.6);
+  color: #ffffff;
+}
+
+.outline:hover {
+  background: rgb(255 255 255 / 0.12);
+}
+
+.light:focus-visible,
+.outline:focus-visible {
+  outline-color: #ffffff;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease-out;
+}
+
+/* La hover săgeata se înclină ușor în sus, cu vârful tot spre dreapta. */
+.button:hover .arrow {
+  transform: translateX(2px) rotate(-30deg);
+}

@@ -1,0 +1,148 @@
+/* Părțile plicului folosite și de varianta de mobil, și de cea de desktop. */
+
+/* Interiorul plicului, vizibil când clapa e ridicată. */
+.back {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-outer);
+  background: #ffd9e5;
+}
+
+/* Fața plicului: acoperă formularul, mai puțin deschizătura în V. */
+.front {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: var(--radius-outer);
+  background: linear-gradient(to bottom, #fff5f8, var(--surface) 55%);
+  clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.flapShadow {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  transform-origin: top;
+  will-change: transform;
+  pointer-events: none;
+  /* z-index se schimbă la jumătatea rotației, când clapa trece de verticală. */
+  transition: z-index 0s 0.25s;
+}
+
+.flapOpen {
+  z-index: 0;
+}
+
+.flap {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-outer) var(--radius-outer) 0 0;
+  background: linear-gradient(to bottom, #ffd9e5, #ffb8cf);
+  clip-path: polygon(0 0, 100% 0, 50% var(--tip));
+}
+
+.seal {
+  position: absolute;
+  top: var(--tip);
+  left: 50%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 10px 20px -8px rgb(252 3 86 / 0.7);
+  cursor: pointer;
+  translate: -50% -50%;
+  transition:
+    scale 0.2s ease-out,
+    /* Reapare abia după ce clapa s-a închis la loc. */
+    opacity 0.2s ease-out 0.4s,
+    background-color 0.2s ease-out;
+}
+
+.seal svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Inel care pulsează în jurul butonului. */
+.seal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--primary);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+.seal:hover {
+  scale: 1.1;
+  background: var(--primary-dark);
+}
+
+.seal:hover svg {
+  animation: ring 0.5s ease-in-out;
+}
+
+.seal:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 4px;
+}
+
+.sealHidden {
+  scale: 0.4;
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0s;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.45;
+    scale: 1;
+  }
+
+  to {
+    opacity: 0;
+    scale: 1.9;
+  }
+}
+
+@keyframes ring {
+  25% {
+    rotate: -14deg;
+  }
+
+  50% {
+    rotate: 12deg;
+  }
+
+  75% {
+    rotate: -8deg;
+  }
+}
+
+@media (min-width: 640px) {
+  .seal {
+    width: 80px;
+    height: 80px;
+  }
+
+  .seal svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seal::before,
+  .seal:hover svg {
+    animation: none;
+  }
+}

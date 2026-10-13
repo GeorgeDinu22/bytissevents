@@ -1,0 +1,49 @@
+.heading {
+  /* Revine abia după ce clapa s-a închis la loc. */
+  transition:
+    translate 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s,
+    scale 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s,
+    opacity 0.6s ease-out 0.45s;
+}
+
+/* La deschidere titlul coboară discret în spatele plicului. */
+.headingHidden {
+  translate: 0 calc(100% + 72px);
+  scale: 0.88;
+  opacity: 0;
+  transition:
+    translate 1s cubic-bezier(0.4, 0, 0.2, 1),
+    scale 1s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.7s ease-in-out 0.15s;
+}
+
+.envelope {
+  position: relative;
+  max-width: 640px;
+  aspect-ratio: 3 / 2;
+  margin: 40px auto 0;
+}
+
+/* Formularul. Stă micșorat în plic, în spatele feței, și e același element
+   care ajunge apoi în centrul ecranului (pozițiile vin din CtaMobile.jsx). */
+.letter {
+  --width: min(480px, calc(100vw - 32px));
+  position: absolute;
+  top: 12%;
+  left: calc(50% - var(--width) / 2);
+  z-index: 1;
+  width: var(--width);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  padding: var(--card-padding);
+  border-radius: var(--radius-outer);
+  background: var(--surface);
+  transform-origin: top center;
+  will-change: transform;
+  transition: box-shadow 0.3s ease-out;
+}
+
+.letterOnTop {
+  z-index: 101;
+  box-shadow: 0 32px 64px -24px rgb(31 10 18 / 0.5);
+}

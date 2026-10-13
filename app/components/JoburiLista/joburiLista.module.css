@@ -1,0 +1,40 @@
+.section {
+  padding: 64px 16px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.item {
+  aspect-ratio: 4 / 5;
+}
+
+@media (min-width: 560px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: 96px 16px;
+  }
+
+  .grid {
+    margin-top: 56px;
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
