@@ -170,6 +170,14 @@
   font-size: 14px;
 }
 
+/* Pe mobil titlul și descrierea sunt centrate. */
+@media (max-width: 639px) {
+  .container .heading {
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
 @media (min-width: 640px) {
   .section {
     padding: 96px 16px;

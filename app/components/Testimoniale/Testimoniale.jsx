@@ -36,6 +36,7 @@ export default function Testimoniale() {
     <section id="testimoniale" className={styles.section}>
       <div className={styles.container}>
         <SectionHeading
+          className={styles.heading}
           title={
             <>
               Recomandari cât <span>1000 de pliante</span>
