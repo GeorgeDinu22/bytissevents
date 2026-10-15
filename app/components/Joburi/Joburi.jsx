@@ -18,7 +18,7 @@ export default function Joburi() {
               Joburi cu care ne <span>ocupăm</span>
             </>
           }
-          description="Pentru fiecare tip de proiect avem oameni pregătiți. Dacă ești firmă, îți formăm echipa; dacă vrei să lucrezi, aici vezi ce poți face."
+          description="Pregătim echipa ideală pentru fiecare proiect. Susținem firmele cu oameni dedicați și le oferim promotorilor proiectele care li se potrivesc cel mai bine."
         />
       </div>
 
@@ -34,7 +34,9 @@ export default function Joburi() {
       </ul>
 
       <div className={styles.more}>
-        <ButtonLink href="/joburi">Descoperă joburi disponibile</ButtonLink>
+        <ButtonLink href="/joburi" size="large">
+          Descoperă joburi disponibile
+        </ButtonLink>
       </div>
     </section>
   );

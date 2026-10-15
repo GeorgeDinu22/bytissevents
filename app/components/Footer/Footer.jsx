@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { contact, mailto, tel } from "../../data/contact";
 import styles from "./footer.module.css";
@@ -8,7 +9,13 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.brand}>
           <Link href="/" className={styles.logo}>
-            bytiss<span>events</span>
+            <Image
+              src="/logo/bytissevents-logo-simplu.svg"
+              alt="ByTissEvents"
+              width={649}
+              height={118}
+              className={styles.logoImage}
+            />
           </Link>
           <p className={styles.tagline}>
             Oameni potriviți pentru campanii memorabile.
@@ -53,9 +60,22 @@ export default function Footer() {
         </div>
       </div>
 
-      <p className={styles.copyright}>
-        © 2026 bytissevents. Toate drepturile rezervate.
-      </p>
+      <div className={styles.bottom}>
+        <p>© 2026 bytissevents. Toate drepturile rezervate.</p>
+
+        {/* Opacitatea e doar pe text: pe un părinte ar estompa și linkul. */}
+        <p>
+          <span className={styles.creditText}>Dezvoltat de</span>{" "}
+          <a
+            href="https://georgeweb-design.ro"
+            target="_blank"
+            rel="noopener"
+            className={`${styles.link} ${styles.creditLink}`}
+          >
+            George Web Design
+          </a>
+        </p>
+      </div>
     </footer>
   );
 }

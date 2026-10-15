@@ -14,7 +14,6 @@ function Required() {
 // `wide` pune cele trei câmpuri scurte pe un singur rând (varianta de desktop).
 export default function ContactForm({
   wide = false,
-  firstFieldRef,
   onClose,
   onSent,
 }) {
@@ -43,7 +42,6 @@ export default function ContactForm({
         Nume <Required />
       </span>
       <input
-        ref={firstFieldRef}
         name="nume"
         type="text"
         autoComplete="name"

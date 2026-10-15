@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ButtonLink from "../ButtonLink/ButtonLink";
+import HeroDissolve from "./HeroDissolve";
 import styles from "./hero.module.css";
 
 // TODO: imagini demo de pe Unsplash — de înlocuit cu poze proprii.
@@ -12,13 +13,13 @@ const photos = [
 
 export default function Hero() {
   return (
-    <section className={styles.hero}>
+    <HeroDissolve>
       <div aria-hidden="true" className={styles.glow} />
 
       <div className={styles.inner}>
         <div className={styles.content}>
           <h1 className={styles.title}>
-            <em>Oameni potriviți</em> pentru campanii <span>memorabile</span>
+            <span>Oameni potriviți pentru</span> campanii <br/> <strong>memorabile</strong>
           </h1>
 
           <p className={styles.description}>
@@ -47,6 +48,6 @@ export default function Hero() {
           ))}
         </div>
       </div>
-    </section>
+    </HeroDissolve>
   );
 }

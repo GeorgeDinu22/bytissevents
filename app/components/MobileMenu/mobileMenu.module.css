@@ -1,0 +1,85 @@
+/* Card separat care plutește sub navbar, fără să împingă pagina în jos. */
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  padding: var(--card-padding);
+  border-radius: var(--radius-outer);
+  background: var(--surface);
+  box-shadow: 0 16px 32px -16px rgb(252 3 86 / 0.35);
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 16px;
+  transition:
+    opacity 0.2s ease-out,
+    translate 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.25s;
+}
+
+.open {
+  opacity: 1;
+  visibility: visible;
+  translate: 0;
+  transition-delay: 0s;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.link {
+  display: block;
+  padding: 8px 12px;
+  border-radius: var(--radius-inner);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    color 0.2s ease-out,
+    background-color 0.2s ease-out;
+}
+
+.link:hover {
+  background: var(--background);
+  color: var(--primary);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu {
+    translate: 0;
+    transition:
+      opacity 0.15s linear,
+      visibility 0s linear 0.15s;
+  }
+
+  .open {
+    transition-delay: 0s;
+  }
+}
+
+@media (min-width: 640px) {
+  .cta {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu {
+    display: none;
+  }
+}

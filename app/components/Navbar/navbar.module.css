@@ -34,14 +34,13 @@
 }
 
 .logo {
+  display: flex;
   border-radius: var(--radius-inner);
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.025em;
 }
 
-.logo span {
-  color: var(--primary);
+.logoImage {
+  width: auto;
+  height: 26px;
 }
 
 .links {
@@ -108,35 +107,9 @@
   outline-offset: 2px;
 }
 
-/* Meniul de mobil plutește sub navbar, fără să împingă pagina în jos. */
-.mobileMenu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: var(--card-padding);
-  border-radius: var(--radius-outer);
-  background: var(--surface);
-  box-shadow: 0 16px 32px -16px rgb(252 3 86 / 0.35);
-}
-
-.mobileCta {
-  display: flex;
-  flex-direction: column;
-  margin-top: 8px;
-  font-size: 14px;
-}
-
 @media (min-width: 640px) {
   .cta {
     display: inline-flex;
-  }
-
-  .mobileCta {
-    display: none;
   }
 }
 
@@ -145,8 +118,7 @@
     display: flex;
   }
 
-  .toggle,
-  .mobileMenu {
+  .toggle {
     display: none;
   }
 }

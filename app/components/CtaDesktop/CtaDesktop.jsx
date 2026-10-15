@@ -36,7 +36,6 @@ export default function CtaDesktop() {
   const [target, setTarget] = useState({ x: 0, y: 0 });
   const envelopeRef = useRef(null);
   const letterRef = useRef(null);
-  const firstFieldRef = useRef(null);
   const sealRef = useRef(null);
 
   const isClosed = phase === "closed";
@@ -102,7 +101,6 @@ export default function CtaDesktop() {
       if (event.key === "Escape") setPhase("closing");
     };
     document.addEventListener("keydown", onKeyDown);
-    firstFieldRef.current?.focus({ preventScroll: true });
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [isOpen]);
 
@@ -180,7 +178,6 @@ export default function CtaDesktop() {
         >
           <ContactForm
             wide
-            firstFieldRef={firstFieldRef}
             onClose={() => setPhase("closing")}
             onSent={() => setPhase("closing")}
           />

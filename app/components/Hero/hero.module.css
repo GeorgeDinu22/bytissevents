@@ -1,8 +1,44 @@
+/* 100svh scena vizibilă + 240svh „pistă” în care scroll-ul doar avansează
+   animația. Mai înalt = animație mai lentă. Secțiunea următoare urcă peste
+   ultimii 100svh, ca să nu rămână un ecran gol după animație. */
 .hero {
   position: relative;
+  height: 340svh;
+  margin-bottom: -100svh;
+  /* Altfel cutia transparentă a hero-ului prinde click-urile din secțiunea
+     următoare, care stă peste ultimii lui 100svh. Scena le reactivează. */
+  pointer-events: none;
+}
+
+/* Fără overflow pe .hero: ar opri position: sticky. */
+.scene {
+  position: sticky;
+  top: var(--sticky-top, 0px);
   isolation: isolate;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
   padding: 80px 16px 56px;
+  pointer-events: auto;
+}
+
+/* Stratul care acoperă scena. Fără WebGL, cortina îl înlocuiește. */
+.dissolve,
+.curtain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.curtain {
+  background: var(--background);
+  transform: scaleY(0);
+  transform-origin: bottom;
 }
 
 .glow {
@@ -20,6 +56,7 @@
 
 .inner {
   position: relative;
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -34,19 +71,22 @@
 }
 
 .title {
+  font-style: italic;
   font-size: 36px;
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  font-weight: 650;
+  line-height: 1.1;
   text-wrap: balance;
 }
 
-.title em {
-  font-weight: 600;
+.title span {
+  font-weight: 550;
+  font-style: normal;
 }
 
-.title span {
+.title strong {
+  font-style: normal;
   color: var(--primary);
+  font-weight: 800;
 }
 
 .description {
@@ -79,11 +119,6 @@
   margin: 0 -6px;
   border-radius: var(--radius-outer);
   background: var(--surface);
-  box-shadow: 0 18px 36px -18px rgb(252 3 86 / 0.55);
-  animation: float 7s ease-in-out infinite alternate;
-  transition:
-    rotate 0.3s ease-out,
-    scale 0.3s ease-out;
 }
 
 
@@ -124,7 +159,7 @@
 }
 
 @media (min-width: 640px) {
-  .hero {
+  .scene {
     padding: 112px 16px 72px;
   }
 
@@ -139,7 +174,7 @@
 
 /* De la 1100px pozele plutesc în stânga și în dreapta textului. */
 @media (min-width: 1100px) {
-  .hero {
+  .scene {
     padding: 128px 16px 112px;
   }
 
@@ -197,5 +232,21 @@
 @media (prefers-reduced-motion: reduce) {
   .photo {
     animation: none;
+  }
+
+  /* Fără animația la scroll: hero-ul revine la o secțiune obișnuită. */
+  .hero {
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  .scene {
+    position: relative;
+    min-height: 0;
+  }
+
+  .dissolve,
+  .curtain {
+    display: none;
   }
 }

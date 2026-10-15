@@ -14,13 +14,12 @@
 }
 
 .logo {
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.025em;
+  display: inline-flex;
 }
 
-.logo span {
-  color: var(--primary);
+.logoImage {
+  width: auto;
+  height: 34px;
 }
 
 .tagline {
@@ -60,11 +59,23 @@
   border-radius: 4px;
 }
 
-.copyright {
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
   max-width: var(--container);
   margin: 32px auto 0;
   color: var(--muted);
   font-size: 13px;
+}
+
+.creditText {
+  opacity: 0.75;
+}
+
+.creditLink {
+  font-weight: 600;
 }
 
 @media (min-width: 640px) {

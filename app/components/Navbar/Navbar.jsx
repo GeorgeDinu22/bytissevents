@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import useHideOnScroll from "../../hooks/useHideOnScroll";
 import ButtonLink from "../ButtonLink/ButtonLink";
+import MobileMenu from "../MobileMenu/MobileMenu";
 import styles from "./navbar.module.css";
 
 const links = [
@@ -22,7 +24,14 @@ export default function Navbar() {
       <nav aria-label="Navigare principală" className={styles.nav}>
         <div className={styles.bar}>
           <Link href="/" className={styles.logo}>
-            bytiss<span>events</span>
+            <Image
+              src="/logo/bytissevents-logo-simplu.svg"
+              alt="ByTissEvents"
+              width={649}
+              height={118}
+              preload
+              className={styles.logoImage}
+            />
           </Link>
 
           <ul className={styles.links}>
@@ -65,26 +74,12 @@ export default function Navbar() {
           </div>
         </div>
 
-        {open && (
-          <ul id="meniu-mobil" className={styles.mobileMenu}>
-            {links.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={styles.link}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-            <li className={styles.mobileCta}>
-              <ButtonLink href="#contact" onClick={() => setOpen(false)}>
-                Contact
-              </ButtonLink>
-            </li>
-          </ul>
-        )}
+        <MobileMenu
+          id="meniu-mobil"
+          open={open}
+          links={links}
+          onClose={() => setOpen(false)}
+        />
       </nav>
     </header>
   );

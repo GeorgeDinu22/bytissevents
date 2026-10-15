@@ -48,7 +48,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ro" className={jakarta.variable}>
+    // `data-scroll-behavior` face ca Next să sară instant sus la schimbarea paginii,
+    // chiar dacă pagina principală are scroll lin.
+    <html
+      lang="ro"
+      className={jakarta.variable}
+      data-scroll-behavior="smooth"
+    >
       <body>
         {children}
         <WhatsAppButton />

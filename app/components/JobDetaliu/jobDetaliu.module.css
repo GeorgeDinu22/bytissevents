@@ -10,7 +10,7 @@
 .back {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap:4px;
   color: var(--muted);
   font-size: 15px;
   font-weight: 600;

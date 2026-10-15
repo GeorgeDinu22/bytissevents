@@ -105,7 +105,9 @@ export default function SliderScena({ id, crowd, title, label }) {
         </div>
 
         <div className={styles.actions}>
-          <ButtonLink href="#contact">Cere ofertă personalizată</ButtonLink>
+          <ButtonLink href="#contact" size="large">
+            Cere ofertă personalizată
+          </ButtonLink>
         </div>
       </div>
     </section>

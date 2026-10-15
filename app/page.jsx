@@ -13,10 +13,10 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main>
+      <main data-smooth-scroll>
         <Hero />
-        <Marquee />
         <DeCeNoi />
+        <Marquee />
         <Joburi />
         <Personal />
         <Testimoniale />

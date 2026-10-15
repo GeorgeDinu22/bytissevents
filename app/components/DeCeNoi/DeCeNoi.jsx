@@ -14,7 +14,7 @@ const audiences = [
     steps: [
       {
         title: "Ne spui ce ai de făcut",
-        text: "Evenimentul, perioada, câți oameni și ce au de făcut. Atât ne trebuie ca să pornim.",
+        text: "Evenimentul, perioada, câți oameni și ce au de făcut. Atât avem nevoie ca să pornim.",
       },
       {
         title: "Alegem oamenii, nu doar numărul",
@@ -22,7 +22,7 @@ const audiences = [
       },
       {
         title: "Rămânem lângă echipă",
-        text: "Instructajul, coordonarea și înlocuirile sunt treaba noastră. Tu vorbești cu un singur om.",
+        text: "Instructajul, coordonarea și înlocuirile sunt în grija noastră. Tu vorbești cu un singur om.",
       },
     ],
   },
@@ -65,16 +65,17 @@ export default function DeCeNoi() {
         <SectionHeading
           title={
             <>
-              De ce <span>noi</span>
+              De ce <span>ByTissEvents ?</span>
             </>
           }
         />
 
         <p className={styles.statement}>
-          Suntem oamenii <Pill src="/images/joburi/sampling.jpg" /> din spatele
-          campaniilor <em>care se țin minte</em>. Găsim echipa potrivită pentru
-          brandul tău <Pill src="/images/joburi/festivaluri.jpg" /> și jobul
-          potrivit pentru tine.
+          Preluăm noi grija detaliilor <Pill src="/images/joburi/sampling.jpg" />{" "}
+          pentru ca evenimentul tău <em>să înflorească</em>, conectând brandurile
+          cu echipe dedicate de hostesse{" "}
+          <Pill src="/images/joburi/festivaluri.jpg" /> și oferind oamenilor
+          energici proiectele ideale.
         </p>
 
         <div className={styles.columns}>

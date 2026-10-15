@@ -38,7 +38,6 @@ export default function CtaMobile() {
   const [target, setTarget] = useState({ x: 0, y: 0 });
   const envelopeRef = useRef(null);
   const letterRef = useRef(null);
-  const firstFieldRef = useRef(null);
   const sealRef = useRef(null);
 
   const isClosed = phase === "closed";
@@ -95,7 +94,6 @@ export default function CtaMobile() {
       if (event.key === "Escape") setPhase("returning");
     };
     document.addEventListener("keydown", onKeyDown);
-    firstFieldRef.current?.focus({ preventScroll: true });
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [isOpen]);
 
@@ -176,7 +174,6 @@ export default function CtaMobile() {
           onAnimationComplete={handlePhaseDone}
         >
           <ContactForm
-            firstFieldRef={firstFieldRef}
             onClose={() => setPhase("returning")}
             onSent={() => setPhase("returning")}
           />
